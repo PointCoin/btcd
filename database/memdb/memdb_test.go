@@ -8,8 +8,8 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/PointCoin/btcd/database"
-	"github.com/PointCoin/btcd/database/memdb"
+	"github.com/PointCoin/pointcoind/database"
+	"github.com/PointCoin/pointcoind/database/memdb"
 	"github.com/PointCoin/btcnet"
 	"github.com/PointCoin/btcutil"
 	"github.com/PointCoin/btcwire"

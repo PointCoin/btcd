@@ -8,7 +8,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/PointCoin/btcd/database"
+	"github.com/PointCoin/pointcoind/database"
 	"github.com/PointCoin/btcutil"
 	"github.com/PointCoin/btcwire"
 	"github.com/davecgh/go-spew/spew"

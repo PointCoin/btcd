@@ -8,9 +8,9 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/PointCoin/btcd/blockchain"
-	"github.com/PointCoin/btcd/database"
-	_ "github.com/PointCoin/btcd/database/memdb"
+	"github.com/PointCoin/pointcoind/blockchain"
+	"github.com/PointCoin/pointcoind/database"
+	_ "github.com/PointCoin/pointcoind/database/memdb"
 	"github.com/PointCoin/btcnet"
 	"github.com/PointCoin/btcutil"
 )

@@ -7,7 +7,7 @@ package blockchain_test
 import (
 	"testing"
 
-	"github.com/PointCoin/btcd/blockchain"
+	"github.com/PointCoin/pointcoind/blockchain"
 	"github.com/PointCoin/btcnet"
 	"github.com/PointCoin/btcutil"
 	"github.com/PointCoin/btcwire"

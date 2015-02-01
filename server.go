@@ -19,9 +19,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/PointCoin/btcd/addrmgr"
-	"github.com/PointCoin/btcd/blockchain"
-	"github.com/PointCoin/btcd/database"
+	"github.com/PointCoin/pointcoind/addrmgr"
+	"github.com/PointCoin/pointcoind/blockchain"
+	"github.com/PointCoin/pointcoind/database"
 	"github.com/PointCoin/btcjson"
 	"github.com/PointCoin/btcnet"
 	"github.com/PointCoin/btcutil"
@@ -1049,7 +1049,7 @@ out:
 			// listen port?
 			// XXX this assumes timeout is in seconds.
 			listenPort, err := s.nat.AddPortMapping("tcp", int(lport), int(lport),
-				"btcd listen port", 20*60)
+				"pointcoind listen port", 20*60)
 			if err != nil {
 				srvrLog.Warnf("can't add UPnP port mapping: %v", err)
 			}
@@ -1087,7 +1087,7 @@ out:
 	s.wg.Done()
 }
 
-// newServer returns a new btcd server configured to listen on addr for the
+// newServer returns a new pointcoind server configured to listen on addr for the
 // bitcoin network type specified by netParams.  Use start to begin accepting
 // connections from peers.
 func newServer(listenAddrs []string, db database.Db, netParams *btcnet.Params) (*server, error) {
@@ -1096,7 +1096,7 @@ func newServer(listenAddrs []string, db database.Db, netParams *btcnet.Params) (
 		return nil, err
 	}
 
-	amgr := addrmgr.New(cfg.DataDir, btcdLookup)
+	amgr := addrmgr.New(cfg.DataDir, pointcoindLookup)
 
 	var listeners []net.Listener
 	var nat NAT

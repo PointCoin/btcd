@@ -11,8 +11,8 @@ import (
 	"path/filepath"
 	"strconv"
 
-	"github.com/PointCoin/btcd/database"
-	_ "github.com/PointCoin/btcd/database/ldb"
+	"github.com/PointCoin/pointcoind/database"
+	_ "github.com/PointCoin/pointcoind/database/ldb"
 	"github.com/PointCoin/btclog"
 	"github.com/PointCoin/btcnet"
 	"github.com/PointCoin/btcutil"
@@ -30,8 +30,8 @@ type config struct {
 }
 
 var (
-	btcdHomeDir     = btcutil.AppDataDir("btcd", false)
-	defaultDataDir  = filepath.Join(btcdHomeDir, "data")
+	pointcoindHomeDir     = btcutil.AppDataDir("pointcoind", false)
+	defaultDataDir  = filepath.Join(pointcoindHomeDir, "data")
 	log             btclog.Logger
 	activeNetParams = &btcnet.MainNetParams
 )
@@ -42,7 +42,7 @@ const (
 )
 
 // netName returns the name used when referring to a bitcoin network.  At the
-// time of writing, btcd currently places blocks for testnet version 3 in the
+// time of writing, pointcoind currently places blocks for testnet version 3 in the
 // data and log directory "testnet", which does not match the Name field of the
 // btcnet parameters.  This function can be used to override this directory name
 // as "testnet" when the passed active network matches btcwire.TestNet3.

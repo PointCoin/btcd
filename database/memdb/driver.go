@@ -7,7 +7,7 @@ package memdb
 import (
 	"fmt"
 
-	"github.com/PointCoin/btcd/database"
+	"github.com/PointCoin/pointcoind/database"
 	"github.com/PointCoin/btclog"
 )
 

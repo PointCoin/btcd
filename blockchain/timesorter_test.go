@@ -10,7 +10,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/PointCoin/btcd/blockchain"
+	"github.com/PointCoin/pointcoind/blockchain"
 )
 
 // TestTimeSorter tests the timeSorter implementation.

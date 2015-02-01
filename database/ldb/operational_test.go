@@ -14,8 +14,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/PointCoin/btcd/database"
-	"github.com/PointCoin/btcd/txscript"
+	"github.com/PointCoin/pointcoind/database"
+	"github.com/PointCoin/pointcoind/txscript"
 	"github.com/PointCoin/btcnet"
 	"github.com/PointCoin/btcutil"
 	"github.com/PointCoin/btcwire"

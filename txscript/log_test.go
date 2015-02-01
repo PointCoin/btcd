@@ -10,7 +10,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/PointCoin/btcd/txscript"
+	"github.com/PointCoin/pointcoind/txscript"
 )
 
 func TestSetLogWriter(t *testing.T) {

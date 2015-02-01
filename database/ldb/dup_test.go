@@ -10,7 +10,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/PointCoin/btcd/database"
+	"github.com/PointCoin/pointcoind/database"
 	"github.com/PointCoin/btcutil"
 	"github.com/PointCoin/btcwire"
 )

@@ -10,11 +10,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/PointCoin/btcd/addrmgr"
+	"github.com/PointCoin/pointcoind/addrmgr"
 
-	"github.com/PointCoin/btcd/blockchain"
-	"github.com/PointCoin/btcd/database"
-	"github.com/PointCoin/btcd/txscript"
+	"github.com/PointCoin/pointcoind/blockchain"
+	"github.com/PointCoin/pointcoind/database"
+	"github.com/PointCoin/pointcoind/txscript"
 	"github.com/PointCoin/btclog"
 	"github.com/PointCoin/btcwire"
 	"github.com/PointCoin/seelog"
@@ -42,7 +42,7 @@ var (
 	amgrLog    = btclog.Disabled
 	bcdbLog    = btclog.Disabled
 	bmgrLog    = btclog.Disabled
-	btcdLog    = btclog.Disabled
+	pointcoindLog    = btclog.Disabled
 	chanLog    = btclog.Disabled
 	discLog    = btclog.Disabled
 	minrLog    = btclog.Disabled
@@ -58,7 +58,7 @@ var subsystemLoggers = map[string]btclog.Logger{
 	"AMGR": amgrLog,
 	"BCDB": bcdbLog,
 	"BMGR": bmgrLog,
-	"BTCD": btcdLog,
+	"BTCD": pointcoindLog,
 	"CHAN": chanLog,
 	"DISC": discLog,
 	"MINR": minrLog,
@@ -106,7 +106,7 @@ func useLogger(subsystemID string, logger btclog.Logger) {
 		bmgrLog = logger
 
 	case "BTCD":
-		btcdLog = logger
+		pointcoindLog = logger
 
 	case "CHAN":
 		chanLog = logger

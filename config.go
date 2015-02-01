@@ -16,9 +16,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/PointCoin/btcd/database"
-	_ "github.com/PointCoin/btcd/database/ldb"
-	_ "github.com/PointCoin/btcd/database/memdb"
+	"github.com/PointCoin/pointcoind/database"
+	_ "github.com/PointCoin/pointcoind/database/ldb"
+	_ "github.com/PointCoin/pointcoind/database/memdb"
 	"github.com/PointCoin/btcutil"
 	"github.com/PointCoin/btcwire"
 	flags "github.com/PointCoin/go-flags"
@@ -26,11 +26,11 @@ import (
 )
 
 const (
-	defaultConfigFilename    = "btcd.conf"
+	defaultConfigFilename    = "pointcoind.conf"
 	defaultDataDirname       = "data"
 	defaultLogLevel          = "info"
 	defaultLogDirname        = "logs"
-	defaultLogFilename       = "btcd.log"
+	defaultLogFilename       = "pointcoind.log"
 	defaultMaxPeers          = 125
 	defaultBanDuration       = time.Hour * 24
 	defaultMaxRPCClients     = 10
@@ -47,20 +47,20 @@ const (
 )
 
 var (
-	btcdHomeDir        = btcutil.AppDataDir("btcd", false)
-	defaultConfigFile  = filepath.Join(btcdHomeDir, defaultConfigFilename)
-	defaultDataDir     = filepath.Join(btcdHomeDir, defaultDataDirname)
+	pointcoindHomeDir        = btcutil.AppDataDir("pointcoind", false)
+	defaultConfigFile  = filepath.Join(pointcoindHomeDir, defaultConfigFilename)
+	defaultDataDir     = filepath.Join(pointcoindHomeDir, defaultDataDirname)
 	knownDbTypes       = database.SupportedDBs()
-	defaultRPCKeyFile  = filepath.Join(btcdHomeDir, "rpc.key")
-	defaultRPCCertFile = filepath.Join(btcdHomeDir, "rpc.cert")
-	defaultLogDir      = filepath.Join(btcdHomeDir, defaultLogDirname)
+	defaultRPCKeyFile  = filepath.Join(pointcoindHomeDir, "rpc.key")
+	defaultRPCCertFile = filepath.Join(pointcoindHomeDir, "rpc.cert")
+	defaultLogDir      = filepath.Join(pointcoindHomeDir, defaultLogDirname)
 )
 
 // runServiceCommand is only set to a real function on Windows.  It is used
 // to parse and execute service commands specified via the -s flag.
 var runServiceCommand func(string) error
 
-// config defines the configuration options for btcd.
+// config defines the configuration options for pointcoind.
 //
 // See loadConfig for details on the configuration load process.
 type config struct {
@@ -115,7 +115,7 @@ type config struct {
 	miningAddrs        []btcutil.Address
 }
 
-// serviceOptions defines the configuration options for btcd as a service on
+// serviceOptions defines the configuration options for pointcoind as a service on
 // Windows.
 type serviceOptions struct {
 	ServiceCommand string `short:"s" long:"service" description:"Service command {install, remove, start, stop}"`
@@ -126,7 +126,7 @@ type serviceOptions struct {
 func cleanAndExpandPath(path string) string {
 	// Expand initial ~ to OS specific home directory.
 	if strings.HasPrefix(path, "~") {
-		homeDir := filepath.Dir(btcdHomeDir)
+		homeDir := filepath.Dir(pointcoindHomeDir)
 		path = strings.Replace(path, "~", homeDir, 1)
 	}
 
@@ -292,7 +292,7 @@ func newConfigParser(cfg *config, so *serviceOptions, options flags.Options) *fl
 // 	3) Load configuration file overwriting defaults with any specified options
 // 	4) Parse CLI options and overwrite/add any specified options
 //
-// The above results in btcd functioning properly without any config settings
+// The above results in pointcoind functioning properly without any config settings
 // while still allowing the user to override settings with config files and
 // command line options.  Command line options always take precedence.
 func loadConfig() (*config, []string, error) {
@@ -387,7 +387,7 @@ func loadConfig() (*config, []string, error) {
 
 	// Create the home directory if it doesn't already exist.
 	funcName := "loadConfig"
-	err = os.MkdirAll(btcdHomeDir, 0700)
+	err = os.MkdirAll(pointcoindHomeDir, 0700)
 	if err != nil {
 		// Show a nicer error message if it's because a symlink is
 		// linked to a directory that does not exist (probably because
@@ -723,32 +723,32 @@ func loadConfig() (*config, []string, error) {
 	// done.  This prevents the warning on help messages and invalid
 	// options.  Note this should go directly before the return.
 	if configFileError != nil {
-		btcdLog.Warnf("%v", configFileError)
+		pointcoindLog.Warnf("%v", configFileError)
 	}
 
 	return &cfg, remainingArgs, nil
 }
 
-// btcdDial connects to the address on the named network using the appropriate
+// pointcoindDial connects to the address on the named network using the appropriate
 // dial function depending on the address and configuration options.  For
 // example, .onion addresses will be dialed using the onion specific proxy if
 // one was specified, but will otherwise use the normal dial function (which
 // could itself use a proxy or not).
-func btcdDial(network, address string) (net.Conn, error) {
+func pointcoindDial(network, address string) (net.Conn, error) {
 	if strings.HasSuffix(address, ".onion") {
 		return cfg.oniondial(network, address)
 	}
 	return cfg.dial(network, address)
 }
 
-// btcdLookup returns the correct DNS lookup function to use depending on the
+// pointcoindLookup returns the correct DNS lookup function to use depending on the
 // passed host and configuration options.  For example, .onion addresses will be
 // resolved using the onion specific proxy if one was specified, but will
 // otherwise treat the normal proxy as tor unless --noonion was specified in
 // which case the lookup will fail.  Meanwhile, normal IP addresses will be
 // resolved using tor if a proxy was specified unless --noonion was also
 // specified in which case the normal system DNS resolver will be used.
-func btcdLookup(host string) ([]net.IP, error) {
+func pointcoindLookup(host string) ([]net.IP, error) {
 	if strings.HasSuffix(host, ".onion") {
 		return cfg.onionlookup(host)
 	}

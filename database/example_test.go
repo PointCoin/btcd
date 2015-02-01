@@ -7,8 +7,8 @@ package database_test
 import (
 	"fmt"
 
-	"github.com/PointCoin/btcd/database"
-	_ "github.com/PointCoin/btcd/database/memdb"
+	"github.com/PointCoin/pointcoind/database"
+	_ "github.com/PointCoin/pointcoind/database/memdb"
 	"github.com/PointCoin/btcnet"
 	"github.com/PointCoin/btcutil"
 )
@@ -20,8 +20,8 @@ func ExampleCreateDB() {
 	// Ordinarily this would be whatever driver(s) your application
 	// requires.
 	// import (
-	//	"github.com/PointCoin/btcd/database"
-	// 	_ "github.com/PointCoin/btcd/database/memdb"
+	//	"github.com/PointCoin/pointcoind/database"
+	// 	_ "github.com/PointCoin/pointcoind/database/memdb"
 	// )
 
 	// Create a database and schedule it to be closed on exit.  This example

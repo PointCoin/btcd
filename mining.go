@@ -10,9 +10,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/PointCoin/btcd/blockchain"
-	"github.com/PointCoin/btcd/database"
-	"github.com/PointCoin/btcd/txscript"
+	"github.com/PointCoin/pointcoind/blockchain"
+	"github.com/PointCoin/pointcoind/database"
+	"github.com/PointCoin/pointcoind/txscript"
 	"github.com/PointCoin/btcutil"
 	"github.com/PointCoin/btcwire"
 )
@@ -36,8 +36,8 @@ const (
 
 	// coinbaseFlags is added to the coinbase script of a generated block
 	// and is used to monitor BIP16 support as well as blocks that are
-	// generated via btcd.
-	coinbaseFlags = "/P2SH/btcd/"
+	// generated via pointcoind.
+	coinbaseFlags = "/P2SH/pointcoind/"
 
 	// standardScriptVerifyFlags are the script flags which are used when
 	// executing transaction scripts to enforce additional checks which

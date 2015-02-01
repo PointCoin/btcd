@@ -8,7 +8,7 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/PointCoin/btcd/txscript"
+	"github.com/PointCoin/pointcoind/txscript"
 )
 
 // TestScriptBuilderAddOp tests that pushing opcodes to a script via the

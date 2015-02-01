@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/PointCoin/btcd/addrmgr"
+	"github.com/PointCoin/pointcoind/addrmgr"
 	"github.com/PointCoin/btcwire"
 )
 

@@ -5,7 +5,7 @@
 package main
 
 import (
-	"github.com/PointCoin/btcd/blockchain"
+	"github.com/PointCoin/pointcoind/blockchain"
 	"github.com/PointCoin/btcwire"
 )
 

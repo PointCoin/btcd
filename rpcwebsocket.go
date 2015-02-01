@@ -19,8 +19,8 @@ import (
 
 	"golang.org/x/crypto/ripemd160"
 
-	"github.com/PointCoin/btcd/database"
-	"github.com/PointCoin/btcd/txscript"
+	"github.com/PointCoin/pointcoind/database"
+	"github.com/PointCoin/pointcoind/txscript"
 	"github.com/PointCoin/btcjson"
 	"github.com/PointCoin/btcutil"
 	"github.com/PointCoin/btcwire"
@@ -1879,7 +1879,7 @@ fetchRange:
 		minBlock += int64(len(hashList))
 	}
 
-	// Notify websocket client of the finished rescan.  Due to how btcd
+	// Notify websocket client of the finished rescan.  Due to how pointcoind
 	// asynchronously queues notifications to not block calling code,
 	// there is no guarantee that any of the notifications created during
 	// rescan (such as rescanprogress, recvtx and redeemingtx) will be

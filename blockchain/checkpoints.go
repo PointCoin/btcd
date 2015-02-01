@@ -7,7 +7,7 @@ package blockchain
 import (
 	"fmt"
 
-	"github.com/PointCoin/btcd/txscript"
+	"github.com/PointCoin/pointcoind/txscript"
 	"github.com/PointCoin/btcnet"
 	"github.com/PointCoin/btcutil"
 	"github.com/PointCoin/btcwire"

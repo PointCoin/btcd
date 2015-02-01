@@ -16,9 +16,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/PointCoin/btcd/addrmgr"
-	"github.com/PointCoin/btcd/blockchain"
-	"github.com/PointCoin/btcd/database"
+	"github.com/PointCoin/pointcoind/addrmgr"
+	"github.com/PointCoin/pointcoind/blockchain"
+	"github.com/PointCoin/pointcoind/database"
 	"github.com/PointCoin/btcutil"
 	"github.com/PointCoin/btcutil/bloom"
 	"github.com/PointCoin/btcwire"
@@ -58,7 +58,7 @@ const (
 var (
 	// userAgentName is the user agent name and is used to help identify
 	// ourselves to other bitcoin peers.
-	userAgentName = "btcd"
+	userAgentName = "pointcoind"
 
 	// userAgentVersion is the user agent version and is used to help
 	// identify ourselves to other bitcoin peers.
@@ -1969,7 +1969,7 @@ func newOutboundPeer(s *server, addr string, persistent bool, retryCount int64) 
 			time.Sleep(scaledDuration)
 		}
 		srvrLog.Debugf("Attempting to connect to %s", addr)
-		conn, err := btcdDial("tcp", addr)
+		conn, err := pointcoindDial("tcp", addr)
 		if err != nil {
 			srvrLog.Debugf("Failed to connect to %s: %v", addr, err)
 			p.server.donePeers <- p

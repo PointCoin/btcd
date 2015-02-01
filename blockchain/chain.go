@@ -13,7 +13,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/PointCoin/btcd/database"
+	"github.com/PointCoin/pointcoind/database"
 	"github.com/PointCoin/btcnet"
 	"github.com/PointCoin/btcutil"
 	"github.com/PointCoin/btcwire"
@@ -355,7 +355,7 @@ func (b *BlockChain) GenerateInitialIndex() error {
 	// Loop forwards through each block loading the node into the index for
 	// the block.
 	//
-	// Due to a bug in the SQLite btcdb driver, the FetchBlockBySha call is
+	// Due to a bug in the SQLite pointcoindb driver, the FetchBlockBySha call is
 	// limited to a maximum number of hashes per invocation.  Since SQLite
 	// is going to be nuked eventually, the bug isn't being fixed in the
 	// driver.  In the mean time, work around the issue by calling

@@ -9,15 +9,15 @@ import (
 	"path/filepath"
 	"runtime"
 
-	"github.com/PointCoin/btcd/blockchain"
-	"github.com/PointCoin/btcd/database"
-	_ "github.com/PointCoin/btcd/database/ldb"
-	"github.com/PointCoin/btcd/limits"
+	"github.com/PointCoin/pointcoind/blockchain"
+	"github.com/PointCoin/pointcoind/database"
+	_ "github.com/PointCoin/pointcoind/database/ldb"
+	"github.com/PointCoin/pointcoind/limits"
 	"github.com/PointCoin/btclog"
 )
 
 const (
-	// blockDbNamePrefix is the prefix for the btcd block database.
+	// blockDbNamePrefix is the prefix for the pointcoind block database.
 	blockDbNamePrefix = "blocks"
 )
 

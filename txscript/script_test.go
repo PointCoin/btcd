@@ -10,7 +10,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/PointCoin/btcd/txscript"
+	"github.com/PointCoin/pointcoind/txscript"
 	"github.com/PointCoin/btcec"
 	"github.com/PointCoin/btcnet"
 	"github.com/PointCoin/btcutil"

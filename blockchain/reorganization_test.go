@@ -13,7 +13,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/PointCoin/btcd/blockchain"
+	"github.com/PointCoin/pointcoind/blockchain"
 	"github.com/PointCoin/btcutil"
 	"github.com/PointCoin/btcwire"
 )
@@ -77,7 +77,7 @@ func TestReorganization(t *testing.T) {
 
 // loadBlocks reads files containing bitcoin block data (gzipped but otherwise
 // in the format bitcoind writes) from disk and returns them as an array of
-// btcutil.Block.  This is largely borrowed from the test code in btcdb.
+// btcutil.Block.  This is largely borrowed from the test code in pointcoindb.
 func loadBlocks(filename string) (blocks []*btcutil.Block, err error) {
 	filename = filepath.Join("testdata/", filename)
 

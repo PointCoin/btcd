@@ -11,9 +11,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/PointCoin/btcd/blockchain"
-	"github.com/PointCoin/btcd/database"
-	_ "github.com/PointCoin/btcd/database/ldb"
+	"github.com/PointCoin/pointcoind/blockchain"
+	"github.com/PointCoin/pointcoind/database"
+	_ "github.com/PointCoin/pointcoind/database/ldb"
 	"github.com/PointCoin/btcutil"
 	"github.com/PointCoin/btcwire"
 )

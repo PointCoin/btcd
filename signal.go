@@ -35,13 +35,13 @@ func mainInterruptHandler() {
 		case <-interruptChannel:
 			// Ignore more than one shutdown signal.
 			if isShutdown {
-				btcdLog.Infof("Received SIGINT (Ctrl+C).  " +
+				pointcoindLog.Infof("Received SIGINT (Ctrl+C).  " +
 					"Already shutting down...")
 				continue
 			}
 
 			isShutdown = true
-			btcdLog.Infof("Received SIGINT (Ctrl+C).  Shutting down...")
+			pointcoindLog.Infof("Received SIGINT (Ctrl+C).  Shutting down...")
 
 			// Run handlers in LIFO order.
 			for i := range interruptCallbacks {

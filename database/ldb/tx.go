@@ -9,7 +9,7 @@ import (
 	"encoding/binary"
 	"errors"
 
-	"github.com/PointCoin/btcd/database"
+	"github.com/PointCoin/pointcoind/database"
 	"github.com/PointCoin/btcutil"
 	"github.com/PointCoin/btcwire"
 	"github.com/PointCoin/goleveldb/leveldb"

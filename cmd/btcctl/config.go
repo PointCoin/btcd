@@ -12,12 +12,12 @@ import (
 )
 
 var (
-	btcdHomeDir           = btcutil.AppDataDir("btcd", false)
+	pointcoindHomeDir           = btcutil.AppDataDir("pointcoind", false)
 	btcctlHomeDir         = btcutil.AppDataDir("btcctl", false)
 	btcwalletHomeDir      = btcutil.AppDataDir("btcwallet", false)
 	defaultConfigFile     = filepath.Join(btcctlHomeDir, "btcctl.conf")
 	defaultRPCServer      = "localhost"
-	defaultRPCCertFile    = filepath.Join(btcdHomeDir, "rpc.cert")
+	defaultRPCCertFile    = filepath.Join(pointcoindHomeDir, "rpc.cert")
 	defaultWalletCertFile = filepath.Join(btcwalletHomeDir, "rpc.cert")
 )
 
@@ -105,7 +105,7 @@ func loadConfig() (*flags.Parser, *config, []string, error) {
 	}
 
 	// Create the home directory if it doesn't already exist.
-	err := os.MkdirAll(btcdHomeDir, 0700)
+	err := os.MkdirAll(pointcoindHomeDir, 0700)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "%v\n", err)
 		os.Exit(-1)

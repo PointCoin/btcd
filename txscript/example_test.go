@@ -8,7 +8,7 @@ import (
 	"encoding/hex"
 	"fmt"
 
-	"github.com/PointCoin/btcd/txscript"
+	"github.com/PointCoin/pointcoind/txscript"
 	"github.com/PointCoin/btcnet"
 	"github.com/PointCoin/btcutil"
 )

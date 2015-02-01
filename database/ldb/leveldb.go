@@ -11,7 +11,7 @@ import (
 	"strconv"
 	"sync"
 
-	"github.com/PointCoin/btcd/database"
+	"github.com/PointCoin/pointcoind/database"
 	"github.com/PointCoin/btclog"
 	"github.com/PointCoin/btcutil"
 	"github.com/PointCoin/btcwire"

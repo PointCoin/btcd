@@ -13,8 +13,8 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/PointCoin/btcd/blockchain"
-	"github.com/PointCoin/btcd/database"
+	"github.com/PointCoin/pointcoind/blockchain"
+	"github.com/PointCoin/pointcoind/database"
 	"github.com/PointCoin/btcnet"
 	"github.com/PointCoin/btcutil"
 	"github.com/PointCoin/btcwire"
@@ -1390,7 +1390,7 @@ func removeRegressionDB(dbPath string) error {
 	// Remove the old regression test database if it already exists.
 	fi, err := os.Stat(dbPath)
 	if err == nil {
-		btcdLog.Infof("Removing regression test database from '%s'", dbPath)
+		pointcoindLog.Infof("Removing regression test database from '%s'", dbPath)
 		if fi.IsDir() {
 			err := os.RemoveAll(dbPath)
 			if err != nil {
@@ -1442,7 +1442,7 @@ func warnMultipeDBs() {
 	// Warn if there are extra databases.
 	if len(duplicateDbPaths) > 0 {
 		selectedDbPath := blockDbPath(cfg.DbType)
-		btcdLog.Warnf("WARNING: There are multiple block chain databases "+
+		pointcoindLog.Warnf("WARNING: There are multiple block chain databases "+
 			"using different database types.\nYou probably don't "+
 			"want to waste disk space by having more than one.\n"+
 			"Your current database is located at [%v].\nThe "+
@@ -1461,7 +1461,7 @@ func setupBlockDB() (database.Db, error) {
 	// handle it uniquely.  We also don't want to worry about the multiple
 	// database type warnings when running with the memory database.
 	if cfg.DbType == "memdb" {
-		btcdLog.Infof("Creating block database in memory.")
+		pointcoindLog.Infof("Creating block database in memory.")
 		db, err := database.CreateDB(cfg.DbType)
 		if err != nil {
 			return nil, err
@@ -1478,7 +1478,7 @@ func setupBlockDB() (database.Db, error) {
 	// each run, so remove it now if it already exists.
 	removeRegressionDB(dbPath)
 
-	btcdLog.Infof("Loading block database from '%s'", dbPath)
+	pointcoindLog.Infof("Loading block database from '%s'", dbPath)
 	db, err := database.OpenDB(cfg.DbType, dbPath)
 	if err != nil {
 		// Return the error if it's not because the database
@@ -1524,11 +1524,11 @@ func loadBlockDB() (database.Db, error) {
 			db.Close()
 			return nil, err
 		}
-		btcdLog.Infof("Inserted genesis block %v",
+		pointcoindLog.Infof("Inserted genesis block %v",
 			activeNetParams.GenesisHash)
 		height = 0
 	}
 
-	btcdLog.Infof("Block database loaded with block height %d", height)
+	pointcoindLog.Infof("Block database loaded with block height %d", height)
 	return db, nil
 }
