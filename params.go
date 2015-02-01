@@ -31,13 +31,7 @@ var mainNetParams = params{
 	Params:  &btcnet.MainNetParams,
 	rpcPort: "8334",
 	dnsSeeds: []string{
-		"seed.bitcoin.sipa.be",
-		"dnsseed.bluematt.me",
-		"dnsseed.bitcoin.dashjr.org",
-		"seed.bitcoinstats.com",
-		"seed.bitnodes.io",
-		"bitseed.xf2.org",
-		"seeds.bitcoin.open-nodes.org",
+		"",
 	},
 }
 
@@ -55,14 +49,9 @@ var regressionNetParams = params{
 // (btcwire.TestNet3).  NOTE: The RPC port is intentionally different than the
 // reference implementation - see the mainNetParams comment for details.
 var testNet3Params = params{
-	Params:  &btcnet.TestNet3Params,
-	rpcPort: "18334",
-	dnsSeeds: []string{
-		"testnet-seed.alexykot.me",
-		"testnet-seed.bitcoin.schildbach.de",
-		"testnet-seed.bitcoin.petertodd.org",
-		"testnet-seed.bluematt.me",
-	},
+	Params:   &btcnet.TestNet3Params,
+	rpcPort:  "18334",
+	dnsSeeds: []string{},
 }
 
 // simNetParams contains parameters specific to the simulation test network
