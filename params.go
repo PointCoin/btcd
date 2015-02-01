@@ -28,11 +28,9 @@ type params struct {
 // it does not handle on to btcd.  This approach allows the wallet process
 // to emulate the full reference implementation RPC API.
 var mainNetParams = params{
-	Params:  &btcnet.MainNetParams,
-	rpcPort: "8334",
-	dnsSeeds: []string{
-		"",
-	},
+	Params:   &btcnet.MainNetParams,
+	rpcPort:  "8334",
+	dnsSeeds: []string{},
 }
 
 // regressionNetParams contains parameters specific to the regression test
