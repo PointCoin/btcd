@@ -16,13 +16,13 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/btcsuite/btcd/addrmgr"
-	"github.com/btcsuite/btcd/blockchain"
-	"github.com/btcsuite/btcd/database"
-	"github.com/btcsuite/btcutil"
-	"github.com/btcsuite/btcutil/bloom"
-	"github.com/btcsuite/btcwire"
-	"github.com/btcsuite/go-socks/socks"
+	"github.com/PointCoin/btcd/addrmgr"
+	"github.com/PointCoin/btcd/blockchain"
+	"github.com/PointCoin/btcd/database"
+	"github.com/PointCoin/btcutil"
+	"github.com/PointCoin/btcutil/bloom"
+	"github.com/PointCoin/btcwire"
+	"github.com/PointCoin/go-socks/socks"
 	"github.com/davecgh/go-spew/spew"
 )
 

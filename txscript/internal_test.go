@@ -14,8 +14,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/btcsuite/btcutil"
-	"github.com/btcsuite/btcwire"
+	"github.com/PointCoin/btcutil"
+	"github.com/PointCoin/btcwire"
 )
 
 // TstMaxScriptSize makes the internal maxScriptSize constant available to the

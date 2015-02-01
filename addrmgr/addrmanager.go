@@ -23,7 +23,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/btcsuite/btcwire"
+	"github.com/PointCoin/btcwire"
 )
 
 // AddrManager provides a concurrency safe address manager for caching potential

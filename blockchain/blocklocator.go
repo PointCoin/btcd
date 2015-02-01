@@ -5,7 +5,7 @@
 package blockchain
 
 import (
-	"github.com/btcsuite/btcwire"
+	"github.com/PointCoin/btcwire"
 )
 
 // BlockLocator is used to help locate a specific block.  The algorithm for

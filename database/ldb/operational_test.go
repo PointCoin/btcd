@@ -14,11 +14,11 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/btcsuite/btcd/database"
-	"github.com/btcsuite/btcd/txscript"
-	"github.com/btcsuite/btcnet"
-	"github.com/btcsuite/btcutil"
-	"github.com/btcsuite/btcwire"
+	"github.com/PointCoin/btcd/database"
+	"github.com/PointCoin/btcd/txscript"
+	"github.com/PointCoin/btcnet"
+	"github.com/PointCoin/btcutil"
+	"github.com/PointCoin/btcwire"
 	"golang.org/x/crypto/ripemd160"
 )
 

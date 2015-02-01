@@ -9,7 +9,7 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/btcsuite/btcwire"
+	"github.com/PointCoin/btcwire"
 )
 
 const (

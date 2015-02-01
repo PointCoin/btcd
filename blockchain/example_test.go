@@ -8,11 +8,11 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/btcsuite/btcd/blockchain"
-	"github.com/btcsuite/btcd/database"
-	_ "github.com/btcsuite/btcd/database/memdb"
-	"github.com/btcsuite/btcnet"
-	"github.com/btcsuite/btcutil"
+	"github.com/PointCoin/btcd/blockchain"
+	"github.com/PointCoin/btcd/database"
+	_ "github.com/PointCoin/btcd/database/memdb"
+	"github.com/PointCoin/btcnet"
+	"github.com/PointCoin/btcutil"
 )
 
 // This example demonstrates how to create a new chain instance and use

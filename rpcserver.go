@@ -26,17 +26,17 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/btcsuite/btcd/blockchain"
-	"github.com/btcsuite/btcd/database"
-	"github.com/btcsuite/btcd/txscript"
-	"github.com/btcsuite/btcec"
-	"github.com/btcsuite/btcjson"
-	"github.com/btcsuite/btcnet"
-	"github.com/btcsuite/btcutil"
-	"github.com/btcsuite/btcwire"
-	"github.com/btcsuite/btcws"
-	"github.com/btcsuite/fastsha256"
-	"github.com/btcsuite/websocket"
+	"github.com/PointCoin/btcd/blockchain"
+	"github.com/PointCoin/btcd/database"
+	"github.com/PointCoin/btcd/txscript"
+	"github.com/PointCoin/btcec"
+	"github.com/PointCoin/btcjson"
+	"github.com/PointCoin/btcnet"
+	"github.com/PointCoin/btcutil"
+	"github.com/PointCoin/btcwire"
+	"github.com/PointCoin/btcws"
+	"github.com/PointCoin/fastsha256"
+	"github.com/PointCoin/websocket"
 )
 
 const (

@@ -9,12 +9,12 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/btcsuite/btcd/database"
-	_ "github.com/btcsuite/btcd/database/ldb"
-	"github.com/btcsuite/btcnet"
-	"github.com/btcsuite/btcutil"
-	"github.com/btcsuite/btcwire"
-	flags "github.com/btcsuite/go-flags"
+	"github.com/PointCoin/btcd/database"
+	_ "github.com/PointCoin/btcd/database/ldb"
+	"github.com/PointCoin/btcnet"
+	"github.com/PointCoin/btcutil"
+	"github.com/PointCoin/btcwire"
+	flags "github.com/PointCoin/go-flags"
 )
 
 const (

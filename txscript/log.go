@@ -8,7 +8,7 @@ import (
 	"errors"
 	"io"
 
-	"github.com/btcsuite/btclog"
+	"github.com/PointCoin/btclog"
 )
 
 // log is a logger that is initialized with no output filters.  This

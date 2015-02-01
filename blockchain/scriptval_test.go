@@ -9,7 +9,7 @@ import (
 	"runtime"
 	"testing"
 
-	"github.com/btcsuite/btcd/blockchain"
+	"github.com/PointCoin/btcd/blockchain"
 )
 
 // TestCheckBlockScripts ensures that validating the all of the scripts in a

@@ -5,8 +5,8 @@
 package main
 
 import (
-	"github.com/btcsuite/btcnet"
-	"github.com/btcsuite/btcwire"
+	"github.com/PointCoin/btcnet"
+	"github.com/PointCoin/btcwire"
 )
 
 // activeNetParams is a pointer to the parameters specific to the

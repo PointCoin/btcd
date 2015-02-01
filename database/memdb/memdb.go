@@ -10,9 +10,9 @@ import (
 	"math"
 	"sync"
 
-	"github.com/btcsuite/btcd/database"
-	"github.com/btcsuite/btcutil"
-	"github.com/btcsuite/btcwire"
+	"github.com/PointCoin/btcd/database"
+	"github.com/PointCoin/btcutil"
+	"github.com/PointCoin/btcwire"
 )
 
 // Errors that the various database functions may return.

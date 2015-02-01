@@ -15,9 +15,9 @@ import (
 
 	"golang.org/x/crypto/ripemd160"
 
-	"github.com/btcsuite/btcec"
-	"github.com/btcsuite/btcwire"
-	"github.com/btcsuite/fastsha256"
+	"github.com/PointCoin/btcec"
+	"github.com/PointCoin/btcwire"
+	"github.com/PointCoin/fastsha256"
 )
 
 // An opcode defines the information related to a txscript opcode.

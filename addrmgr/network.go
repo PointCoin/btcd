@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"net"
 
-	"github.com/btcsuite/btcwire"
+	"github.com/PointCoin/btcwire"
 )
 
 var (
