@@ -17,10 +17,10 @@ const (
 	// before block difficulty requirement is examined to determine how
 	// it should be changed in order to maintain the desired block
 	// generation rate.
-	targetTimespan = time.Hour * 24 * 14
+	targetTimespan = time.Hour * 1
 
 	// targetSpacing is the desired amount of time to generate each block.
-	targetSpacing = time.Minute * 10
+	targetSpacing = time.Minute * 2
 
 	// BlocksPerRetarget is the number of blocks between each difficulty
 	// retarget.  It is calculated based on the desired block generation

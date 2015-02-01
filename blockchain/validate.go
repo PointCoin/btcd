@@ -11,11 +11,11 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/PointCoin/pointcoind/database"
-	"github.com/PointCoin/pointcoind/txscript"
 	"github.com/PointCoin/btcnet"
 	"github.com/PointCoin/btcutil"
 	"github.com/PointCoin/btcwire"
+	"github.com/PointCoin/pointcoind/database"
+	"github.com/PointCoin/pointcoind/txscript"
 )
 
 const (
@@ -51,11 +51,11 @@ const (
 
 	// baseSubsidy is the starting subsidy amount for mined blocks.  This
 	// value is halved every SubsidyHalvingInterval blocks.
-	baseSubsidy = 50 * btcutil.SatoshiPerBitcoin
+	baseSubsidy = 1 * btcutil.SatoshiPerBitcoin
 
 	// CoinbaseMaturity is the number of blocks required before newly
 	// mined bitcoins (coinbase transactions) can be spent.
-	CoinbaseMaturity = 100
+	CoinbaseMaturity = 5
 )
 
 var (
