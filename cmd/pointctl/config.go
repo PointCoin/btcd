@@ -12,10 +12,10 @@ import (
 )
 
 var (
-	pointcoindHomeDir           = btcutil.AppDataDir("pointcoind", false)
-	btcctlHomeDir         = btcutil.AppDataDir("btcctl", false)
-	btcwalletHomeDir      = btcutil.AppDataDir("btcwallet", false)
-	defaultConfigFile     = filepath.Join(btcctlHomeDir, "btcctl.conf")
+	pointcoindHomeDir     = btcutil.AppDataDir("pointcoind", false)
+	btcctlHomeDir         = btcutil.AppDataDir("pointctl", false)
+	btcwalletHomeDir      = btcutil.AppDataDir("wallet", false)
+	defaultConfigFile     = filepath.Join(btcctlHomeDir, "pointctl.conf")
 	defaultRPCServer      = "localhost"
 	defaultRPCCertFile    = filepath.Join(pointcoindHomeDir, "rpc.cert")
 	defaultWalletCertFile = filepath.Join(btcwalletHomeDir, "rpc.cert")
