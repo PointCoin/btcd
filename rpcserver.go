@@ -26,9 +26,6 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/PointCoin/pointcoind/blockchain"
-	"github.com/PointCoin/pointcoind/database"
-	"github.com/PointCoin/pointcoind/txscript"
 	"github.com/PointCoin/btcec"
 	"github.com/PointCoin/btcjson"
 	"github.com/PointCoin/btcnet"
@@ -36,6 +33,9 @@ import (
 	"github.com/PointCoin/btcwire"
 	"github.com/PointCoin/btcws"
 	"github.com/PointCoin/fastsha256"
+	"github.com/PointCoin/pointcoind/blockchain"
+	"github.com/PointCoin/pointcoind/database"
+	"github.com/PointCoin/pointcoind/txscript"
 	"github.com/PointCoin/websocket"
 )
 
@@ -136,8 +136,6 @@ var rpcHandlersBeforeInit = map[string]commandHandler{
 	"getconnectioncount":   handleGetConnectionCount,
 	"getcurrentnet":        handleGetCurrentNet,
 	"getdifficulty":        handleGetDifficulty,
-	"getgenerate":          handleGetGenerate,
-	"gethashespersec":      handleGetHashesPerSec,
 	"getinfo":              handleGetInfo,
 	"getmininginfo":        handleGetMiningInfo,
 	"getnettotals":         handleGetNetTotals,
@@ -151,7 +149,6 @@ var rpcHandlersBeforeInit = map[string]commandHandler{
 	"help":                 handleHelp,
 	"ping":                 handlePing,
 	"sendrawtransaction":   handleSendRawTransaction,
-	"setgenerate":          handleSetGenerate,
 	"stop":                 handleStop,
 	"submitblock":          handleSubmitBlock,
 	"validateaddress":      handleValidateAddress,
@@ -2072,16 +2069,6 @@ func handleGetDifficulty(s *rpcServer, cmd btcjson.Cmd, closeChan <-chan struct{
 	return getDifficultyRatio(blockHeader.Bits), nil
 }
 
-// handleGetGenerate implements the getgenerate command.
-func handleGetGenerate(s *rpcServer, cmd btcjson.Cmd, closeChan <-chan struct{}) (interface{}, error) {
-	return s.server.cpuMiner.IsMining(), nil
-}
-
-// handleGetHashesPerSec implements the gethashespersec command.
-func handleGetHashesPerSec(s *rpcServer, cmd btcjson.Cmd, closeChan <-chan struct{}) (interface{}, error) {
-	return int64(s.server.cpuMiner.HashesPerSecond()), nil
-}
-
 // handleGetInfo implements the getinfo command. We only return the fields
 // that are not related to wallet functionality.
 func handleGetInfo(s *rpcServer, cmd btcjson.Cmd, closeChan <-chan struct{}) (interface{}, error) {
@@ -2162,9 +2149,9 @@ func handleGetMiningInfo(s *rpcServer, cmd btcjson.Cmd, closeChan <-chan struct{
 		CurrentBlockSize: uint64(len(blockBytes)),
 		CurrentBlockTx:   uint64(len(block.MsgBlock().Transactions)),
 		Difficulty:       getDifficultyRatio(block.MsgBlock().Header.Bits),
-		Generate:         s.server.cpuMiner.IsMining(),
-		GenProcLimit:     s.server.cpuMiner.NumWorkers(),
-		HashesPerSec:     int64(s.server.cpuMiner.HashesPerSecond()),
+		Generate:         false,
+		GenProcLimit:     0,
+		HashesPerSec:     int64(0),
 		NetworkHashPS:    networkHashesPerSec,
 		PooledTx:         uint64(s.server.txMemPool.Count()),
 		TestNet:          cfg.TestNet3,
@@ -3002,38 +2989,6 @@ func handleSendRawTransaction(s *rpcServer, cmd btcjson.Cmd, closeChan <-chan st
 	s.server.AddRebroadcastInventory(iv, tx)
 
 	return tx.Sha().String(), nil
-}
-
-// handleSetGenerate implements the setgenerate command.
-func handleSetGenerate(s *rpcServer, cmd btcjson.Cmd, closeChan <-chan struct{}) (interface{}, error) {
-	c := cmd.(*btcjson.SetGenerateCmd)
-
-	// Disable generation regardless of the provided generate flag if the
-	// maximum number of threads (goroutines for our purposes) is 0.
-	// Otherwise enable or disable it depending on the provided flag.
-	generate := c.Generate
-	if c.GenProcLimit == 0 {
-		generate = false
-	}
-
-	if !generate {
-		s.server.cpuMiner.Stop()
-	} else {
-		// Respond with an error if there are no addresses to pay the
-		// created blocks to.
-		if len(cfg.miningAddrs) == 0 {
-			return nil, btcjson.Error{
-				Code: btcjson.ErrInternal.Code,
-				Message: "No payment addresses specified " +
-					"via --miningaddr",
-			}
-		}
-
-		// It's safe to call start even if it's already started.
-		s.server.cpuMiner.SetNumWorkers(int32(c.GenProcLimit))
-		s.server.cpuMiner.Start()
-	}
-	return nil, nil
 }
 
 // handleStop implements the stop command.

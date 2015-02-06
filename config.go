@@ -16,13 +16,13 @@ import (
 	"strings"
 	"time"
 
-	"github.com/PointCoin/pointcoind/database"
-	_ "github.com/PointCoin/pointcoind/database/ldb"
-	_ "github.com/PointCoin/pointcoind/database/memdb"
 	"github.com/PointCoin/btcutil"
 	"github.com/PointCoin/btcwire"
 	flags "github.com/PointCoin/go-flags"
 	"github.com/PointCoin/go-socks/socks"
+	"github.com/PointCoin/pointcoind/database"
+	_ "github.com/PointCoin/pointcoind/database/ldb"
+	_ "github.com/PointCoin/pointcoind/database/memdb"
 )
 
 const (
@@ -47,7 +47,7 @@ const (
 )
 
 var (
-	pointcoindHomeDir        = btcutil.AppDataDir("pointcoind", false)
+	pointcoindHomeDir  = btcutil.AppDataDir("pointcoind", false)
 	defaultConfigFile  = filepath.Join(pointcoindHomeDir, defaultConfigFilename)
 	defaultDataDir     = filepath.Join(pointcoindHomeDir, defaultDataDirname)
 	knownDbTypes       = database.SupportedDBs()
@@ -102,7 +102,6 @@ type config struct {
 	DebugLevel         string        `short:"d" long:"debuglevel" description:"Logging level for all subsystems {trace, debug, info, warn, error, critical} -- You may also specify <subsystem>=<level>,<subsystem2>=<level>,... to set the log level for individual subsystems -- Use show to list available subsystems"`
 	Upnp               bool          `long:"upnp" description:"Use UPnP to map our listening port outside of NAT"`
 	FreeTxRelayLimit   float64       `long:"limitfreerelay" description:"Limit relay of transactions with no transaction fee to the given amount in thousands of bytes per minute"`
-	Generate           bool          `long:"generate" description:"Generate (mine) bitcoins using the CPU"`
 	MiningAddrs        []string      `long:"miningaddr" description:"Add the specified payment address to the list of addresses to use for generated blocks -- At least one address is required if the generate option is set"`
 	BlockMinSize       uint32        `long:"blockminsize" description:"Mininum block size in bytes to be used when creating a block"`
 	BlockMaxSize       uint32        `long:"blockmaxsize" description:"Maximum block size in bytes to be used when creating a block"`
@@ -313,7 +312,6 @@ func loadConfig() (*config, []string, error) {
 		BlockMinSize:      defaultBlockMinSize,
 		BlockMaxSize:      defaultBlockMaxSize,
 		BlockPrioritySize: defaultBlockPrioritySize,
-		Generate:          defaultGenerate,
 	}
 
 	// Service options which are only added on Windows.
@@ -601,17 +599,6 @@ func loadConfig() (*config, []string, error) {
 			return nil, nil, err
 		}
 		cfg.miningAddrs = append(cfg.miningAddrs, addr)
-	}
-
-	// Ensure there is at least one mining address when the generate flag is
-	// set.
-	if cfg.Generate && len(cfg.MiningAddrs) == 0 {
-		str := "%s: the generate flag is set, but there are no mining " +
-			"addresses specified "
-		err := fmt.Errorf(str, funcName)
-		fmt.Fprintln(os.Stderr, err)
-		fmt.Fprintln(os.Stderr, usageMessage)
-		return nil, nil, err
 	}
 
 	// Add default port to all listener addresses if needed and remove
