@@ -51,7 +51,7 @@ const (
 
 	// baseSubsidy is the starting subsidy amount for mined blocks.  This
 	// value is halved every SubsidyHalvingInterval blocks.
-	baseSubsidy = 1 * btcutil.SatoshiPerBitcoin
+	baseSubsidy = 10 * btcutil.SatoshiPerBitcoin
 
 	// CoinbaseMaturity is the number of blocks required before newly
 	// mined bitcoins (coinbase transactions) can be spent.
