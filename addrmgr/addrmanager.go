@@ -120,15 +120,15 @@ const (
 
 	// triedBucketsPerGroup is the number of tried buckets over which an
 	// address group will be spread.
-	triedBucketsPerGroup = 4
+	triedBucketsPerGroup = 128
 
 	// newBucketsPerGroup is the number of new buckets over which an
 	// source address group will be spread.
-	newBucketsPerGroup = 32
+	newBucketsPerGroup = 128
 
 	// newBucketsPerAddress is the number of buckets a frequently seen new
 	// address may end up in.
-	newBucketsPerAddress = 4
+	newBucketsPerAddress = 128
 
 	// numMissingDays is the number of days before which we assume an
 	// address has vanished if we have not seen it announced  in that long.
@@ -136,15 +136,15 @@ const (
 
 	// numRetries is the number of tried without a single success before
 	// we assume an address is bad.
-	numRetries = 3
+	numRetries = 20
 
 	// maxFailures is the maximum number of failures we will accept without
 	// a success before considering an address bad.
-	maxFailures = 10
+	maxFailures = 30
 
 	// minBadDays is the number of days since the last success before we
 	// will consider evicting an address.
-	minBadDays = 7
+	minBadDays = 14
 
 	// getAddrMax is the most addresses that we will send in response
 	// to a getAddr (in practise the most addresses we will return from a
