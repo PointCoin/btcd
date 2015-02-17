@@ -100,35 +100,35 @@ const (
 
 	// dumpAddressInterval is the interval used to dump the address
 	// cache to disk for future use.
-	dumpAddressInterval = time.Minute * 10
+	dumpAddressInterval = time.Second * 15
 
 	// triedBucketSize is the maximum number of addresses in each
 	// tried address bucket.
-	triedBucketSize = 64
+	triedBucketSize = 5000
 
 	// triedBucketCount is the number of buckets we split tried
 	// addresses over.
-	triedBucketCount = 64
+	triedBucketCount = 1
 
 	// newBucketSize is the maximum number of addresses in each new address
 	// bucket.
-	newBucketSize = 64
+	newBucketSize = 5000
 
 	// newBucketCount is the number of buckets that we spread new addresses
 	// over.
-	newBucketCount = 256
+	newBucketCount = 1
 
 	// triedBucketsPerGroup is the number of tried buckets over which an
 	// address group will be spread.
-	triedBucketsPerGroup = 128
+	triedBucketsPerGroup = 1
 
 	// newBucketsPerGroup is the number of new buckets over which an
 	// source address group will be spread.
-	newBucketsPerGroup = 128
+	newBucketsPerGroup = 1
 
 	// newBucketsPerAddress is the number of buckets a frequently seen new
 	// address may end up in.
-	newBucketsPerAddress = 128
+	newBucketsPerAddress = 1
 
 	// numMissingDays is the number of days before which we assume an
 	// address has vanished if we have not seen it announced  in that long.
@@ -153,7 +153,7 @@ const (
 
 	// getAddrPercent is the percentage of total addresses known that we
 	// will share with a call to AddressCache.
-	getAddrPercent = 23
+	getAddrPercent = 100
 
 	// serialisationVersion is the current version of the on-disk format.
 	serialisationVersion = 1
