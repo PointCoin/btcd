@@ -654,16 +654,6 @@ out:
 			if addr == nil {
 				break
 			}
-			key := addrmgr.GroupKey(addr.NetAddress())
-			// Address will not be invalid, local or unroutable
-			// because addrmanager rejects those on addition.
-			// Just check that we don't already have an address
-			// in the same group so that we are not connecting
-			// to the same network segment at the expense of
-			// others.
-			if state.outboundGroups[key] != 0 {
-				break
-			}
 
 			tries++
 			// After 100 bad tries exit the loop and we'll try again
@@ -676,7 +666,7 @@ out:
 
 			// only allow recent nodes (10mins) after we failed 30
 			// times
-			if time.Now().After(addr.LastAttempt().Add(10*time.Minute)) &&
+			if time.Now().After(addr.LastAttempt().Add(15*time.Second)) &&
 				tries < 30 {
 				continue
 			}
@@ -699,7 +689,7 @@ out:
 
 		// We need more peers, wake up in ten seconds and try again.
 		if state.NeedMoreOutbound() {
-			time.AfterFunc(10*time.Second, func() {
+			time.AfterFunc(5*time.Second, func() {
 				s.wakeup <- struct{}{}
 			})
 		}
