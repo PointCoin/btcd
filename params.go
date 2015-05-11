@@ -28,15 +28,16 @@ type params struct {
 // it does not handle on to pointcoind.  This approach allows the wallet process
 // to emulate the full reference implementation RPC API.
 var mainNetParams = params{
-	Params:   &btcnet.MainNetParams,
-	rpcPort:  "8334",
-	dnsSeeds: []string{},
+	Params:  &btcnet.MainNetParams,
+	rpcPort: "8334",
+	dnsSeeds: []string{
+		"one.seed.nskelsey.com",
+		"two.seed.kuck.io",
+		"red.seed.bitcoin-class.org",
+		"blue.seed.bitcoin-class.org",
+	},
 }
 
-// regressionNetParams contains parameters specific to the regression test
-// network (btcwire.TestNet).  NOTE: The RPC port is intentionally different
-// than the reference implementation - see the mainNetParams comment for
-// details.
 var regressionNetParams = params{
 	Params:   &btcnet.RegressionNetParams,
 	rpcPort:  "18334",
